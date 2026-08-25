@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ek Dhaaga, Hazaar Kahaniyan 🧵</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#7A1E3D;
+    --maroon-deep:#4A0E24;
+    --marigold:#E8A33D;
+    --marigold-deep:#B5691C;
+    --teal:#1F5C4F;
+    --ivory:#FBF3E7;
+    --gold:#C9963C;
+    --ink:#2B1B1F;
+    --paper:#FFFCF6;
+    --plum:#3A0E29;
+    --saffron:#F2971F;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  html.locked, html.locked body{overflow:hidden;height:100%;}
+
+  body{
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  ::selection{background:var(--marigold);color:var(--maroon-deep);}
+
+  a:focus-visible, button:focus-visible, .rakhi-item:focus-visible, .promise:focus-visible{
+    outline:3px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  h1,h2,h3{font-family:'Yatra One',cursive;font-weight:400;line-height:1.15;}
+
+  .eyebrow{
+    font-family:'Poppins',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:.72rem;
+    font-weight:600;
+    color:var(--teal);
+  }
+
+  section{position:relative;padding:5.5rem 1.5rem;max-width:920px;margin:0 auto;}
+
+  /* ================= AMBIENT FESTIVE BACKGROUND ================= */
+  .bg-scene{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(232,163,61,.30), transparent 40%),
+      radial-gradient(circle at 90% 18%, rgba(122,30,61,.28), transparent 42%),
+      radial-gradient(circle at 20% 92%, rgba(31,92,79,.20), transparent 45%),
+      radial-gradient(circle at 88% 88%, rgba(242,151,31,.24), transparent 45%),
+      linear-gradient(180deg,#FDF6E9 0%, #FBF0DD 35%, #F7E6CC 65%, #F3DCC0 100%);
+  }
+
+  .bg-scene svg.rangoli-tile{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:.10;
+  }
+
+  .bg-scene .thread-trail{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    opacity:.55;
+  }
+  .bg-scene .thread-trail path{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:1.4;
+    stroke-linecap:round;
+    stroke-dasharray:5 9;
+  }
+
+  .petal{
+    position:absolute;
+    top:-6vh;
+    width:14px;
+    height:14px;
+    background:radial-gradient(circle at 30% 30%, var(--marigold), var(--marigold-deep) 75%);
+    border-radius:0 60% 0 60%;
+    opacity:.55;
+    animation:drift linear infinite;
+    will-change:transform;
+  }
+  .petal.alt{
+    background:radial-gradient(circle at 30% 30%, #e0748f, var(--maroon) 75%);
+  }
+  @keyframes drift{
+    0%{transform:translate(0,0) rotate(0deg);}
+    100%{transform:translate(var(--dx,40px), 118vh) rotate(340deg);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .petal{animation:none; opacity:.25;}
+  }
+
+  /* ================= GIFT GATE ================= */
+  #giftGate{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1.6rem;
+    text-align:center;
+    padding:2rem;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(232,163,61,.35), transparent 55%),
+      linear-gradient(160deg, var(--plum) 0%, var(--maroon-deep) 45%, #2a0a1c 100%);
+    transition:opacity .6s ease, visibility .6s ease;
+  }
+  #giftGate.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .gate-eyebrow{
+    color:var(--marigold);
+    text-transform:uppercase;
+    letter-spacing:.3em;
+    font-size:.72rem;
+    font-weight:600;
+  }
+  .gate-title{
+    font-family:'Yatra One',cursive;
+    color:var(--ivory);
+    font-size:clamp(1.6rem,5.5vw,2.4rem);
+    max-width:16ch;
+  }
+  .gate-title span{color:var(--marigold);}
+
+  #giftBtn{
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:1rem;
+    -webkit-tap-highlight-color:transparent;
+  }
+  #giftBtn svg{width:min(230px,58vw);height:auto;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));}
+
+  .lid-group{transform-origin:110px 96px;transition:transform .55s cubic-bezier(.34,1.56,.64,1), opacity .5s ease .1s;}
+  .ribbon-h{transition:transform .5s ease .05s, opacity .4s ease .05s;}
+  .ribbon-v-l{transition:transform .5s ease .1s, opacity .4s ease .1s;}
+  .ribbon-v-r{transition:transform .5s ease .1s, opacity .4s ease .1s;}
+  .bow-group{transition:transform .45s ease, opacity .35s ease;}
+  .box-shine{transition:opacity .4s ease .2s;}
+
+  #giftGate.opening .lid-group{transform:translateY(-58px) rotate(-18deg); opacity:0;}
+  #giftGate.opening .bow-group{transform:translateY(-58px) scale(.5); opacity:0;}
+  #giftGate.opening .ribbon-h{transform:scaleX(0); opacity:0;}
+  #giftGate.opening .ribbon-v-l{transform:translateX(-30px) rotate(-25deg); opacity:0;}
+  #giftGate.opening .ribbon-v-r{transform:translateX(30px) rotate(25deg); opacity:0;}
+  #giftGate.opening .box-shine{opacity:0;}
+
+  .burst{
+    position:absolute;
+    top:50%; left:50%;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--marigold);
+    opacity:0;
+    pointer-events:none;
+  }
+  #giftGate.opening .burst{
+    animation:burstOut .8s ease-out forwards;
+  }
+  @keyframes burstOut{
+    0%{opacity:1; transform:translate(-50%,-50%) scale(.4);}
+    100%{opacity:0; transform:translate(calc(-50% + var(--bx))) translateY(calc(-50% + var(--by))) scale(1.1);}
+  }
+
+  .gate-hint{
+    color:rgba(251,243,231,.75);
+    font-size:.88rem;
+    letter-spacing:.03em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    #giftGate{transition:opacity .01ms;}
+    .lid-group,.ribbon-h,.ribbon-v-l,.ribbon-v-r,.bow-group,.box-shine,.burst{transition:none !important; animation:none !important;}
+    #giftGate.opening{opacity:0; visibility:hidden;}
+  }
+
+  /* ---------- Thread divider (signature element) ---------- */
+  .thread-divider{
+    width:100%;
+    height:46px;
+    display:block;
+    margin:0 auto;
+  }
+  .thread-divider path{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:2.5;
+    stroke-linecap:round;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:2rem 1.5rem;
+  }
+
+  .rakhi-svg{width:min(220px,55vw);height:auto;margin-bottom:1.5rem;}
+
+  .thread-path{
+    stroke-dasharray:600;
+    stroke-dashoffset:600;
+  }
+  .bow-bit{
+    opacity:0;
+    transform-origin:110px 110px;
+  }
+  html.gate-opened .thread-path{animation:tieThread 2.2s ease-out forwards .2s;}
+  html.gate-opened .bow-bit{animation:popBow .5s ease-out forwards 1.9s;}
+  @keyframes tieThread{to{stroke-dashoffset:0;}}
+  @keyframes popBow{
+    0%{opacity:0;transform:scale(.4);}
+    70%{opacity:1;transform:scale(1.12);}
+    100%{opacity:1;transform:scale(1);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .thread-path{stroke-dashoffset:0;}
+    .bow-bit{opacity:1;transform:scale(1);}
+  }
+
+  .hero h1{
+    font-size:clamp(2.2rem,6vw,3.8rem);
+    color:var(--maroon);
+    max-width:14ch;
+    margin:.4rem 0 1rem;
+  }
+  .hero h1 span{color:var(--marigold-deep);}
+
+  .hero p.sub{
+    font-size:1.05rem;
+    color:#5a4650;
+    max-width:36ch;
+    margin-bottom:2.2rem;
+  }
+
+  .scroll-cue{
+    font-size:.85rem;
+    color:var(--teal);
+    letter-spacing:.05em;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.4rem;
+    animation:bob 2s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .sec-head{text-align:center;margin-bottom:2.8rem;}
+  .sec-head h2{font-size:clamp(1.8rem,4.5vw,2.6rem);color:var(--maroon);margin-top:.5rem;}
+  .sec-head p{color:#6b5a63;max-width:46ch;margin:.7rem auto 0;font-size:.98rem;}
+
+  /* ---------- RAKHI TAX CALCULATOR ---------- */
+  .calc-card{
+    background:var(--paper);
+    border:1.5px solid rgba(201,150,60,.35);
+    border-radius:22px;
+    padding:2rem 1.6rem;
+    box-shadow:0 18px 40px -22px rgba(122,30,61,.35);
+  }
+  .rakhi-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:.9rem .2rem;
+    border-bottom:1px dashed rgba(122,30,61,.18);
+    cursor:pointer;
+    background:none;
+    border-left:none;border-right:none;border-top:none;
+    width:100%;
+    font-family:'Poppins',sans-serif;
+    text-align:left;
+  }
+  .rakhi-item:last-of-type{border-bottom:none;}
+  .rakhi-item .label{
+    display:flex;align-items:center;gap:.8rem;
+    font-size:.98rem;color:var(--ink);
+  }
+  .rakhi-item .checkbox{
+    width:22px;height:22px;border-radius:7px;
+    border:2px solid var(--gold);
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.8rem;color:var(--paper);
+    transition:background .2s ease;
+  }
+  .rakhi-item.checked .checkbox{background:var(--teal);border-color:var(--teal);}
+  .rakhi-item .price{font-weight:600;color:var(--maroon);font-size:.95rem;white-space:nowrap;}
+
+  .calc-total{
+    margin-top:1.6rem;
+    padding-top:1.4rem;
+    border-top:2px solid var(--maroon);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:.5rem;
+  }
+  .calc-total .amt{font-family:'Yatra One',cursive;font-size:2rem;color:var(--maroon);}
+  .calc-total .verdict{font-size:.85rem;color:var(--teal);font-weight:600;max-width:22ch;text-align:right;}
+
+  /* ---------- LETTER / ENVELOPE ---------- */
+  .envelope-wrap{display:flex;flex-direction:column;align-items:center;}
+  .envelope{
+    width:min(320px,80vw);
+    cursor:pointer;
+    background:transparent;
+    border:none;
+    padding:0;
+  }
+  .envelope svg{width:100%;height:auto;display:block;filter:drop-shadow(0 16px 26px rgba(122,30,61,.28));transition:transform .3s ease;}
+  .envelope:hover svg{transform:translateY(-4px);}
+  .envelope-label{margin-top:1rem;font-size:.9rem;color:var(--teal);font-weight:600;letter-spacing:.03em;}
+
+  .letter{
+    max-width:560px;
+    margin:2.2rem auto 0;
+    background:var(--paper);
+    border-radius:4px;
+    padding:2.6rem 2rem;
+    box-shadow:0 20px 44px -22px rgba(122,30,61,.4);
+    font-family:'Caveat',cursive;
+    font-size:1.5rem;
+    line-height:1.55;
+    color:var(--maroon-deep);
+    display:none;
+    position:relative;
+    border-left:5px solid var(--gold);
+  }
+  .letter.show{display:block;animation:unfold .55s ease;}
+  @keyframes unfold{
+    from{opacity:0;transform:translateY(14px) scale(.98);}
+    to{opacity:1;transform:translateY(0) scale(1);}
+  }
+  .letter p{margin-bottom:1rem;}
+  .letter .sign{text-align:right;font-size:1.6rem;color:var(--maroon);margin-top:.5rem;}
+
+  /* ---------- PROMISES ---------- */
+  .promise-list{list-style:none;display:flex;flex-direction:column;gap:.9rem;}
+  .promise{
+    display:flex;
+    align-items:flex-start;
+    gap:.9rem;
+    background:var(--paper);
+    border:1.5px solid rgba(31,92,79,.18);
+    border-radius:16px;
+    padding:1rem 1.2rem;
+    cursor:pointer;
+  }
+  .promise .tick{
+    width:24px;height:24px;border-radius:50%;
+    border:2px solid var(--marigold-deep);
+    flex-shrink:0;margin-top:.1rem;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.85rem;color:var(--paper);
+    transition:background .2s ease, border-color .2s ease;
+  }
+  .promise.done .tick{background:var(--teal);border-color:var(--teal);}
+  .promise.done .txt{text-decoration:line-through;color:#8a7b82;}
+  .promise .txt{font-size:.98rem;line-height:1.45;}
+  .promise .txt b{color:var(--maroon);font-weight:600;}
+
+  /* ---------- QUIZ ---------- */
+  .quiz-card{
+    background:var(--paper);
+    border:1.5px solid rgba(201,150,60,.35);
+    border-radius:22px;
+    padding:1.8rem 1.5rem;
+    box-shadow:0 18px 40px -22px rgba(122,30,61,.35);
+    margin-bottom:1.2rem;
+  }
+  .quiz-card .q-num{
+    font-size:.72rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:600;
+  }
+  .quiz-card .q-text{
+    font-family:'Yatra One',cursive;
+    font-size:1.25rem;
+    color:var(--maroon);
+    margin:.4rem 0 1.1rem;
+  }
+  .q-options{display:flex;flex-direction:column;gap:.65rem;}
+  .q-opt{
+    text-align:left;
+    background:var(--ivory);
+    border:1.5px solid rgba(122,30,61,.15);
+    border-radius:12px;
+    padding:.7rem .9rem;
+    font-family:'Poppins',sans-serif;
+    font-size:.92rem;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .q-opt:hover{border-color:var(--gold);}
+  .q-opt.picked{background:var(--marigold);border-color:var(--marigold-deep);color:var(--maroon-deep);font-weight:600;}
+  .q-opt:disabled{cursor:default;}
+  .q-response{
+    margin-top:.9rem;
+    font-family:'Caveat',cursive;
+    font-size:1.25rem;
+    color:var(--teal);
+    display:none;
+  }
+  .q-response.show{display:block;animation:unfold .4s ease;}
+
+  .quiz-result{
+    text-align:center;
+    background:linear-gradient(135deg, var(--maroon), var(--maroon-deep));
+    color:var(--ivory);
+    border-radius:20px;
+    padding:1.8rem 1.4rem;
+    margin-top:.6rem;
+    display:none;
+  }
+  .quiz-result.show{display:block;animation:unfold .5s ease;}
+  .quiz-result .score{font-family:'Yatra One',cursive;font-size:1.6rem;color:var(--marigold);margin-bottom:.4rem;}
+  .quiz-result p{font-size:.95rem;color:rgba(251,243,231,.9);max-width:38ch;margin:0 auto;}
+
+  /* ---------- CONFESSION NOTES ---------- */
+  .notes-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1rem;
+  }
+  .note-chit{
+    background:var(--paper);
+    border:1.5px dashed var(--gold);
+    border-radius:4px;
+    padding:1.2rem 1rem;
+    cursor:pointer;
+    min-height:104px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transform:rotate(var(--tilt,0deg));
+    box-shadow:0 10px 22px -14px rgba(122,30,61,.4);
+    transition:transform .2s ease;
+  }
+  .note-chit:hover{transform:rotate(0deg) scale(1.02);}
+  .note-chit .fold-label{
+    font-size:.85rem;
+    color:var(--teal);
+    font-weight:600;
+    letter-spacing:.03em;
+  }
+  .note-chit .note-txt{
+    font-family:'Caveat',cursive;
+    font-size:1.25rem;
+    color:var(--maroon-deep);
+    line-height:1.4;
+    display:none;
+  }
+  .note-chit.open{cursor:default;align-items:flex-start;}
+  .note-chit.open .fold-label{display:none;}
+  .note-chit.open .note-txt{display:block;animation:unfold .4s ease;}
+
+  /* ---------- EXCUSE GENERATOR ---------- */
+  .excuse-card{
+    background:var(--paper);
+    border:1.5px solid rgba(201,150,60,.35);
+    border-radius:22px;
+    padding:2rem 1.6rem;
+    text-align:center;
+    box-shadow:0 18px 40px -22px rgba(122,30,61,.35);
+  }
+  .excuse-box{
+    min-height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Caveat',cursive;
+    font-size:1.4rem;
+    color:var(--maroon-deep);
+    padding:0 .5rem;
+    margin-bottom:1.4rem;
+  }
+  .excuse-box.show{animation:unfold .35s ease;}
+  #excuseBtn{
+    background:var(--teal);
+    color:var(--paper);
+    border:none;
+    border-radius:999px;
+    padding:.85rem 1.8rem;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:.92rem;
+    cursor:pointer;
+    letter-spacing:.02em;
+  }
+  #excuseBtn:hover{background:var(--maroon);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding:4.5rem 1.5rem 3.5rem;
+  }
+  footer h3{color:var(--maroon);font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:.6rem;}
+  footer p{color:#6b5a63;font-size:.95rem;max-width:40ch;margin:0 auto;}
+  .footer-note{margin-top:1.6rem;font-family:'Caveat',cursive;font-size:1.4rem;color:var(--teal);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  @media (max-width:640px){
+    section{padding:4rem 1.2rem;}
+    .calc-total{flex-direction:column;align-items:flex-start;}
+    .calc-total .verdict{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<!-- AMBIENT BACKGROUND (sits behind everything) -->
+<div class="bg-scene" aria-hidden="true">
+  <svg class="rangoli-tile" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <pattern id="rangoliDots" width="64" height="64" patternUnits="userSpaceOnUse">
+        <circle cx="32" cy="8" r="2" fill="#7A1E3D"/>
+        <circle cx="8" cy="32" r="2" fill="#E8A33D"/>
+        <circle cx="56" cy="32" r="2" fill="#E8A33D"/>
+        <circle cx="32" cy="56" r="2" fill="#7A1E3D"/>
+        <circle cx="32" cy="32" r="2.6" fill="#1F5C4F"/>
+        <path d="M32 8 Q40 24 56 32 Q40 40 32 56 Q24 40 8 32 Q24 24 32 8 Z" fill="none" stroke="#C9963C" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#rangoliDots)"/>
+  </svg>
+  <svg class="thread-trail" preserveAspectRatio="none" viewBox="0 0 400 2400" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 0 C 120 120, -20 220, 60 340 S 200 520, 100 640 S -20 820, 90 940 S 260 1100, 140 1240 S -10 1420, 100 1560 S 240 1760, 120 1900 S 10 2100, 110 2260 S 220 2380, 140 2400"/>
+  </svg>
+  <div class="petal" style="left:6%; --dx:60px; animation-duration:16s; animation-delay:0s;"></div>
+  <div class="petal alt" style="left:18%; --dx:-40px; animation-duration:19s; animation-delay:2s;"></div>
+  <div class="petal" style="left:32%; --dx:30px; animation-duration:14s; animation-delay:4s;"></div>
+  <div class="petal alt" style="left:48%; --dx:-55px; animation-duration:21s; animation-delay:1s;"></div>
+  <div class="petal" style="left:64%; --dx:45px; animation-duration:17s; animation-delay:5s;"></div>
+  <div class="petal alt" style="left:78%; --dx:-30px; animation-duration:15s; animation-delay:3s;"></div>
+  <div class="petal" style="left:88%; --dx:35px; animation-duration:20s; animation-delay:6s;"></div>
+</div>
+
+<!-- GIFT BOX GATE -->
+<div id="giftGate">
+  <p class="gate-eyebrow">Ek gift hai tumhare liye</p>
+  <h1 class="gate-title">Isse <span>khol</span> ke dekho, behna</h1>
+  <button id="giftBtn" aria-label="Gift box kholo">
+    <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+      <rect class="box-shine" x="30" y="112" width="160" height="80" rx="6" fill="#8f2548"/>
+      <rect x="30" y="112" width="160" height="80" rx="6" fill="#7A1E3D"/>
+      <rect x="30" y="112" width="160" height="80" rx="6" fill="none" stroke="#4A0E24" stroke-width="2"/>
+
+      <rect class="ribbon-v-l" x="98" y="112" width="10" height="80" fill="#1F5C4F"/>
+      <rect class="ribbon-v-r" x="112" y="112" width="10" height="80" fill="#1F5C4F"/>
+
+      <g class="lid-group">
+        <rect x="22" y="88" width="176" height="28" rx="6" fill="#E8A33D"/>
+        <rect x="22" y="88" width="176" height="28" rx="6" fill="none" stroke="#B5691C" stroke-width="2"/>
+        <rect class="ribbon-h" x="22" y="97" width="176" height="10" fill="#1F5C4F"/>
+      </g>
+
+      <g class="bow-group">
+        <circle cx="110" cy="92" r="20" fill="#E8A33D"/>
+        <circle cx="110" cy="92" r="20" fill="none" stroke="#7A1E3D" stroke-width="3"/>
+        <path d="M110 70 L90 50 L98 82 Z" fill="#7A1E3D"/>
+        <path d="M110 70 L130 50 L122 82 Z" fill="#7A1E3D"/>
+        <circle cx="110" cy="92" r="7" fill="#FBF3E7"/>
+      </g>
+
+      <g aria-hidden="true">
+        <circle class="burst" style="--bx:0px; --by:-90px; background:#E8A33D;"></circle>
+        <circle class="burst" style="--bx:70px; --by:-60px; background:#7A1E3D; animation-delay:.05s;"></circle>
+        <circle class="burst" style="--bx:-70px; --by:-60px; background:#1F5C4F; animation-delay:.08s;"></circle>
+        <circle class="burst" style="--bx:90px; --by:10px; background:#E8A33D; animation-delay:.03s;"></circle>
+        <circle class="burst" style="--bx:-90px; --by:10px; background:#C9963C; animation-delay:.1s;"></circle>
+        <circle class="burst" style="--bx:40px; --by:-100px; background:#7A1E3D; animation-delay:.12s;"></circle>
+        <circle class="burst" style="--bx:-40px; --by:-100px; background:#1F5C4F; animation-delay:.07s;"></circle>
+      </g>
+    </svg>
+  </button>
+  <p class="gate-hint">Tap karo box pe ↑</p>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="rakhi-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path class="thread-path" d="M20 110 C 60 40, 160 40, 200 110 C 160 180, 60 180, 20 110"
+          stroke="#C9963C" stroke-width="4" fill="none"/>
+    <g class="bow-bit">
+      <circle cx="110" cy="110" r="26" fill="#E8A33D"/>
+      <circle cx="110" cy="110" r="26" fill="none" stroke="#7A1E3D" stroke-width="3"/>
+      <path d="M110 84 L88 60 L96 96 Z" fill="#7A1E3D"/>
+      <path d="M110 84 L132 60 L124 96 Z" fill="#7A1E3D"/>
+      <circle cx="110" cy="110" r="10" fill="#FBF3E7"/>
+      <circle cx="110" cy="110" r="10" fill="none" stroke="#7A1E3D" stroke-width="2"/>
+    </g>
+  </svg>
+  <p class="eyebrow">Raksha Bandhan, tumhare naam</p>
+  <h1>Ek dhaaga, <span>hazaar kahaniyan</span></h1>
+  <p class="sub">Har saal ek dhaaga bandhti ho, aur har saal iska matlab thoda aur gehra ho jaata hai. Ye chhoti si website, tumhare liye — scroll karo.</p>
+  <div class="scroll-cue">
+    <span>Neeche scroll karo</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<svg class="thread-divider" viewBox="0 0 900 46" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 23 Q 50 3, 100 23 T 200 23 T 300 23 T 400 23 T 500 23 T 600 23 T 700 23 T 800 23 T 900 23"/>
+</svg>
+
+<!-- RAKHI TAX CALCULATOR -->
+<section id="calc">
+  <div class="sec-head">
+    <p class="eyebrow">Interactive · Bhai ka farz</p>
+    <h2>Rakhi ka "official" tax calculator</h2>
+    <p>Jo jo cheez tumhe iss saal chahiye, usko tick karo. Bill neeche ban jaayega — aur ha ye bs formality h kuch nhi milega reason aage pta chal jaega.😁</p>
+  </div>
+
+  <div class="calc-card">
+    <div id="rakhi-items"></div>
+    <div class="calc-total">
+      <span class="amt">₹<span id="total-amt">0</span></span>
+      <span class="verdict" id="verdict">Kuch toh chuno, kanjoos mat bano 😄</span>
+    </div>
+  </div>
+</section>
+
+<svg class="thread-divider" viewBox="0 0 900 46" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 23 Q 50 43, 100 23 T 200 23 T 300 23 T 400 23 T 500 23 T 600 23 T 700 23 T 800 23 T 900 23"/>
+</svg>
+
+<!-- LETTER -->
+<section id="letter">
+  <div class="sec-head">
+    <p class="eyebrow">Sirf tumhare liye</p>
+    <h2>Behna ke naam, ek khat</h2>
+    <p>Envelope kholo — thoda serious, thoda emotional, poora sach.</p>
+  </div>
+
+  <div class="envelope-wrap">
+    <button class="envelope" id="envelopeBtn" aria-expanded="false" aria-controls="letterBox">
+      <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="30" width="280" height="160" rx="8" fill="#FFFCF6" stroke="#C9963C" stroke-width="3"/>
+        <path d="M10 34 L150 140 L290 34" fill="none" stroke="#7A1E3D" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="150" cy="100" r="18" fill="#E8A33D"/>
+        <circle cx="150" cy="100" r="18" fill="none" stroke="#7A1E3D" stroke-width="2.5"/>
+        <path d="M150 88 L140 76 L145 96 Z" fill="#7A1E3D"/>
+        <path d="M150 88 L160 76 L155 96 Z" fill="#7A1E3D"/>
+      </svg>
+    </button>
+    <span class="envelope-label">Yahan tap karo</span>
+  </div>
+
+  <div class="letter" id="letterBox">
+    <p><strong>Hey You,</strong></p>
+
+<p>I know we don't always say these things out loud.</p>
+
+<p>Most of the time, we're busy annoying each other, fighting over stupid things, making fun of each other, or pretending we don't care. 😂</p>
+
+<p>But somewhere between all those silly fights and random moments, you became a really important part of my life.</p>
+
+<p>And honestly, I don't think I say this enough—</p>
+
+<p><strong>I'm really glad you're my family. ❤️</strong></p>
+
+<p>Life is changing so quickly.<br>
+We're growing up, making our own plans, chasing different dreams, and someday we might not even live under the same roof anymore.</p>
+
+<p>Maybe we'll talk less.<br>
+Maybe we'll get busy.<br>
+Maybe we'll have our own lives and responsibilities.</p>
+
+<p>But I hope one thing never changes:</p>
+
+<p><strong>No matter how far life takes us, you'll always have a place in my life.</strong></p>
+
+<p>I may not always know what to say when you're upset.<br>
+I may not always agree with you.<br>
+And let's be honest, I might still annoy you for absolutely no reason. 😂</p>
+
+<p>But if you ever need someone to stand beside you, I hope you'll remember that you have me.</p>
+
+<p>i made this website<br>
+Not because it's Raksha Bandhan.<br>
+but because i don't have 💰money for buy gifts😁</p>
+
+<p>and because <strong>you're family.</strong></p>
+
+<p>And family isn't always about being perfect.<br>
+It's about knowing that even after all the arguments, misunderstandings, and stupid fights…</p>
+
+<p><strong>you still have someone who won't stop caring.</strong></p>
+
+<p>So this Raksha Bandhan, I don't have some huge promise to make.</p>
+
+<p>Just this little one:</p>
+
+<p><strong>Wherever life takes us,<br>
+I'll always be cheering for you.<br>
+I'll always want the best for you.<br>
+And I'll always be happy that you were a part of my childhood, my memories, and my life.</strong></p>
+
+<p>So yeah…</p>
+
+<p><strong>Happy Raksha Bandhan, idiot. 😂❤️</strong></p>
+
+<p>Don't get emotional now.<br>
+I only wrote this once. 😭😂</p>
+
+<p>— <strong>Your forever annoying family member</strong></p>
+
+    <p class="sign">—krish</p>
+  </div>
+</section>
+
+<svg class="thread-divider" viewBox="0 0 900 46" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 23 Q 50 3, 100 23 T 200 23 T 300 23 T 400 23 T 500 23 T 600 23 T 700 23 T 800 23 T 900 23"/>
+</svg>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="sec-head">
+    <p class="eyebrow">Test time</p>
+    <h2>Kitna janti hai apne bhai ko?</h2>
+    <p>5 sawaal, koi sahi-galat nahi — bas dekhte hain kitna match karta hai. Har option pe reply milega.</p>
+  </div>
+
+  <div id="quizWrap"></div>
+
+  <div class="quiz-result" id="quizResult">
+    <div class="score" id="quizScore">Score: 0/5</div>
+    <p id="quizVerdict"></p>
+  </div>
+</section>
+
+<svg class="thread-divider" viewBox="0 0 900 46" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 23 Q 50 43, 100 23 T 200 23 T 300 23 T 400 23 T 500 23 T 600 23 T 700 23 T 800 23 T 900 23"/>
+</svg>
+
+<!-- CONFESSION NOTES -->
+<section id="notes">
+  <div class="sec-head">
+    <p class="eyebrow">Kabhi bola nahi</p>
+    <h2>Chhoti chhoti confessions</h2>
+    <p>Har chit ek chhota sach hai. Tap karke kholo, ek ek karke.</p>
+  </div>
+
+  <div class="notes-grid" id="notesGrid"></div>
+</section>
+
+<svg class="thread-divider" viewBox="0 0 900 46" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 23 Q 50 3, 100 23 T 200 23 T 300 23 T 400 23 T 500 23 T 600 23 T 700 23 T 800 23 T 900 23"/>
+</svg>
+
+<!-- PROMISES -->
+<section id="promises">
+  <div class="sec-head">
+    <p class="eyebrow">Pinky promise</p>
+    <h2>Bhai ke iss saal ke waade</h2>
+    <p>Tap karke tick karo — jitne bhi tumhe yakeen dilane hain ki main serious hoon (kabhi kabhi).</p>
+  </div>
+
+  <ul class="promise-list" id="promiseList">
+    <li class="promise"><span class="tick"></span><span class="txt"><b>Har baar</b> tere messages ko turant reply karunga — theek hai, kam se kam usi din.</span></li>
+    <li class="promise"><span class="tick"></span><span class="txt">Tere favourite snack pe <b>haq jataunga</b>, bina soche ki tere ko bura lga.</span></li>
+    <li class="promise"><span class="tick"></span><span class="txt">Har mushkil waqt mein <b>sabse pehle phone uthaunga</b>, drama chhod ke.</span></li>
+    <li class="promise"><span class="tick"></span><span class="txt">Tumhare crushes/partners ko <b>thoda darana</b> band nahi karunga — ye non-negotiable hai.</span></li>
+    <li class="promise"><span class="tick"></span><span class="txt">Purani ladaiyon ko <b>bhool jaunga</b>, naye taane dhoondh lunga.</span></li>
+    <li class="promise"><span class="tick"></span><span class="txt">Chahe kuch bhi ho jaaye, <b>tumhara sabse bada celebrity</b> hamesha rahunga.</span></li>
+  </ul>
+</section>
+
+<svg class="thread-divider" viewBox="0 0 900 46" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 23 Q 50 43, 100 23 T 200 23 T 300 23 T 400 23 T 500 23 T 600 23 T 700 23 T 800 23 T 900 23"/>
+</svg>
+
+<!-- EXCUSE GENERATOR -->
+<section id="excuses">
+  <div class="sec-head">
+    <p class="eyebrow">Bonus · Bhai ki honesty</p>
+    <h2>Official excuse generator</h2>
+    <p>Jab bhi tumhare message ka reply late aaye, yahi wajah samajh lena.</p>
+  </div>
+
+  <div class="excuse-card">
+    <div class="excuse-box" id="excuseBox">Button dabao, excuse tayyar milega 👇</div>
+    <button id="excuseBtn">Excuse do 🙏</button>
+  </div>
+</section>
+
+<footer>
+  <h3>Happy Raksha Bandhan 🧵</h3>
+  <p>Maybe this little website will disappear into the sea of links one day...</p>
+
+<p>But I hope the memory behind it stays with you. 🫂</p>
+  <p class="footer-note">— banaya khaas tumhare liye, thoda pyaar aur bohot saari taane-baazi se.</p>
+</footer>
+
+<script>
+  // ---- lock scroll until gift is opened ----
+  document.documentElement.classList.add('locked');
+
+  const gate = document.getElementById('giftGate');
+  const giftBtn = document.getElementById('giftBtn');
+
+  function openGate(){
+    if(gate.classList.contains('opening')) return;
+    gate.classList.add('opening');
+    document.documentElement.classList.add('gate-opened');
+    setTimeout(() => {
+      gate.classList.add('hidden');
+      document.documentElement.classList.remove('locked');
+    }, 900);
+  }
+  giftBtn.addEventListener('click', openGate);
+  giftBtn.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openGate(); }
+  });
+
+  const items = [
+    { label: "Chocolate ka bada dabba", price: 500 },
+    { label: "Bina rok-tok ek din shopping", price: 2500 },
+    { label: "Movie + popcorn (extra butter)", price: 800 },
+    { label: "Har rakhi pe bina taane ke gift", price: 1500 },
+    { label: "Emergency 2am pickup service", price: 0, note: "Priceless" },
+    { label: "Sabke saamne tareef karna", price: 0, note: "Priceless (aur rare)" },
+  ];
+
+  const wrap = document.getElementById('rakhi-items');
+  const totalEl = document.getElementById('total-amt');
+  const verdictEl = document.getElementById('verdict');
+  let total = 0;
+
+  items.forEach((item, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'rakhi-item';
+    btn.setAttribute('aria-pressed', 'false');
+    btn.innerHTML = `
+      <span class="label"><span class="checkbox" aria-hidden="true"></span>${item.label}</span>
+      <span class="price">${item.note ? item.note : '₹' + item.price}</span>
+    `;
+    btn.addEventListener('click', () => {
+      const checked = btn.classList.toggle('checked');
+      btn.setAttribute('aria-pressed', checked ? 'true' : 'false');
+      btn.querySelector('.checkbox').textContent = checked ? '✓' : '';
+      total += checked ? item.price : -item.price;
+      totalEl.textContent = total.toLocaleString('en-IN');
+      updateVerdict(total);
+    });
+    wrap.appendChild(btn);
+  });
+
+  function updateVerdict(t){
+    if(t === 0) verdictEl.textContent = "Kuch toh chuno, kanjoos mat bano 😄";
+    else if(t < 1000) verdictEl.textContent = "Bhai affordable mode mein hai 🙂";
+    else if(t < 2500) verdictEl.textContent = "Thoda hisaab lagana padega...";
+    else if(t < 4000) verdictEl.textContent = "Bhai ki salary ro rahi hai 😭";
+    else verdictEl.textContent = "Ab toh EMI hi option hai bhai ke paas 💸";
+  }
+
+  const envBtn = document.getElementById('envelopeBtn');
+  const letterBox = document.getElementById('letterBox');
+  envBtn.addEventListener('click', () => {
+    const isOpen = letterBox.classList.toggle('show');
+    envBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if(isOpen) letterBox.scrollIntoView({ behavior:'smooth', block:'center' });
+  });
+
+  // ---- Quiz: kitna janti hai apne bhai ko ----
+  const quizData = [
+    {
+      q: "Mujhe sabse zyada gussa kab aata hai?",
+      opts: [
+        { t: "Jab koi mera khana khaye", r: "Haha close hai, ye bhi sach hai 😂" },
+        { t: "Jab wifi slow ho", r: "Sahi pakde ho — ye toh national issue hai." },
+        { t: "Jab tum meri baat na maano", r: "Bilkul sahi! Tum toh mujhe sach mein jaanti ho 👀" }
+      ],
+      correct: 2
+    },
+    {
+      q: "Meri sabse badi weakness kya hai?",
+      opts: [
+        { t: "Maggi", r: "Ye toh backup weakness hai 🍜" },
+        { t: "Tumhare emotional dialogues", r: "Pakde gaye. Ye sabse badi weakness hai 😭" },
+        { t: "Neend", r: "Ye bhi top 3 mein hai, but sahi jawab nahi." }
+      ],
+      correct: 1
+    },
+    {
+      q: "Agar main lottery jeetu toh sabse pehle kya karu?",
+      opts: [
+        { t: "Tumhe shopping karau", r: "Correct answer! Tum jaanti ho mujhe 💸" },
+        { t: "Naya phone loon", r: "Nahi nahi, tum pehle aati ho phone se." },
+        { t: "Chhup jaau taaki paisa na maango", r: "Haha soch toh yehi hai, but bol nahi sakta." }
+      ],
+      correct: 0
+    },
+    {
+      q: "Bachpan mein sabse zyada kisne pitai khayi ghar mein?",
+      opts: [
+        { t: "Main", r: "Sahi jawab. History witness hai 😅" },
+        { t: "Tum", r: "Nice try, but nahi — record mera hai." },
+        { t: "Dono barabar", r: "Diplomatic jawab, but sach thoda alag hai." }
+      ],
+      correct: 0
+    },
+    {
+      q: "Sach batao, tum meri life mein kya ho?",
+      opts: [
+        { t: "Bas ek behen", r: "Isse zyada ho tum, ye toh pata hai tumhe bhi." },
+        { t: "Meri sabse badi strength", r: "Ye sabse sach wala jawab hai ❤️" },
+        { t: "Permanent headache (pyaar wali)", r: "Ye bhi sach hai, dono cheezein sach ho sakti hain 😂" }
+      ],
+      correct: 1
+    }
+  ];
+
+  const quizWrap = document.getElementById('quizWrap');
+  const quizResult = document.getElementById('quizResult');
+  const quizScore = document.getElementById('quizScore');
+  const quizVerdict = document.getElementById('quizVerdict');
+  let quizScoreVal = 0;
+  let answeredCount = 0;
+
+  quizData.forEach((item, qi) => {
+    const card = document.createElement('div');
+    card.className = 'quiz-card';
+    card.innerHTML = `
+      <div class="q-num">Sawaal ${qi + 1} / ${quizData.length}</div>
+      <div class="q-text">${item.q}</div>
+      <div class="q-options"></div>
+      <div class="q-response"></div>
+    `;
+    const optsWrap = card.querySelector('.q-options');
+    const respEl = card.querySelector('.q-response');
+
+    item.opts.forEach((opt, oi) => {
+      const optBtn = document.createElement('button');
+      optBtn.className = 'q-opt';
+      optBtn.textContent = opt.t;
+      optBtn.addEventListener('click', () => {
+        if (optsWrap.dataset.answered) return;
+        optsWrap.dataset.answered = 'true';
+        optBtn.classList.add('picked');
+        Array.from(optsWrap.children).forEach(b => b.disabled = true);
+        respEl.textContent = opt.r;
+        respEl.classList.add('show');
+        if (oi === item.correct) quizScoreVal++;
+        answeredCount++;
+        if (answeredCount === quizData.length) showQuizResult();
+      });
+      optsWrap.appendChild(optBtn);
+    });
+
+    quizWrap.appendChild(card);
+  });
+
+  function showQuizResult(){
+    quizScore.textContent = `Score: ${quizScoreVal}/${quizData.length}`;
+    let msg;
+    if(quizScoreVal >= 4) msg = "Tumne mujhe bilkul sahi padha hai — ekdum best friend level understanding 🥹";
+    else if(quizScoreVal >= 2) msg = "Thik-thaak jaanti ho, baaki cheezein waqt ke saath samajh jaogi 😄";
+    else msg = "Score kuch bhi ho, ek cheez pakki hai — tum mujhe sabse zyada jaanti ho, sirf yahi options match nahi hue 😂";
+    quizVerdict.textContent = msg;
+    quizResult.classList.add('show');
+    quizResult.scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+
+  // ---- Confession notes ----
+  const confessions = [
+    "Sach kahu? Tumhare bina ghar khaali khaali lagta hai.",
+    "Mujhe tumse jalan hoti thi bachpan mein... ab samajh aata hai kyun tum special ho.",
+    "Jab tum roti thi na, mujhe sabse zyada bura lagta tha, chahe upar se main hasta tha.",
+    "Tumhare saare purane secrets aaj bhi mere paas safe hain.",
+    "Kabhi kabhi sochta hoon, agar tum meri behen na hoti, toh best friend hoti.",
+    "I'm proud of you — bas ye kabhi seedha bol nahi paata."
+  ];
+
+  const notesGrid = document.getElementById('notesGrid');
+  confessions.forEach((txt, i) => {
+    const chit = document.createElement('button');
+    chit.className = 'note-chit';
+    chit.style.setProperty('--tilt', `${(i % 2 === 0 ? -1 : 1) * (2 + (i % 3))}deg`);
+    chit.setAttribute('aria-expanded', 'false');
+    chit.innerHTML = `
+      <span class="fold-label">Chit #${i + 1}<br>tap karo</span>
+      <span class="note-txt">${txt}</span>
+    `;
+    chit.addEventListener('click', () => {
+      if(chit.classList.contains('open')) return;
+      chit.classList.add('open');
+      chit.setAttribute('aria-expanded', 'true');
+    });
+    notesGrid.appendChild(chit);
+  });
+
+  // ---- Excuse generator ----
+  const excuses = [
+    "Sorry yaar, phone silent pe tha... 3 din se.",
+    "Network issue tha (dil ka, phone ka nahi).",
+    "Duniya bacha raha tha, isliye reply nahi kar paaya (ya bas so raha tha).",
+    "Tumhara message dekha, reply bhi likha... bhejna bhool gaya.",
+    "Typing kar raha tha, phone hi band ho gaya achanak.",
+    "Tumhare baare mein soch raha tha isliye reply nahi kiya — ye jhooth hai but try toh kiya.",
+    "Ek zaroori kaam aa gaya (scrolling reels).",
+    "Battery 1% pe thi aur charger nahi mila."
+  ];
+  const excuseBtn = document.getElementById('excuseBtn');
+  const excuseBox = document.getElementById('excuseBox');
+  let lastExcuse = -1;
+  excuseBtn.addEventListener('click', () => {
+    let idx;
+    do { idx = Math.floor(Math.random() * excuses.length); } while(idx === lastExcuse && excuses.length > 1);
+    lastExcuse = idx;
+    excuseBox.classList.remove('show');
+    void excuseBox.offsetWidth;
+    excuseBox.textContent = excuses[idx];
+    excuseBox.classList.add('show');
+  });
+
+  document.querySelectorAll('.promise').forEach(p => {
+    p.setAttribute('tabindex', '0');
+    p.setAttribute('role', 'checkbox');
+    p.setAttribute('aria-checked', 'false');
+    const toggle = () => {
+      const done = p.classList.toggle('done');
+      p.setAttribute('aria-checked', done ? 'true' : 'false');
+      p.querySelector('.tick').textContent = done ? '✓' : '';
+    };
+    p.addEventListener('click', toggle);
+    p.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+    });
+  });
+</script>
+
+</body>
+</html>
